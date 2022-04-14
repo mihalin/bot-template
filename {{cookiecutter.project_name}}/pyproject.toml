@@ -10,10 +10,15 @@ aiogram = "^2.19"
 python-dotenv = "^0.20.0"
 aioredis = "^2.0.1"
 aerich = "^0.6.3"
-tortoise-orm = "^0.19.0"
+tortoise-orm = {extras = ["asyncpg"], version = "^0.19.0"}
 
 [tool.poetry.dev-dependencies]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.aerich]
+tortoise_orm = "{{cookiecutter.project_name}}.settings.TORTOISE_ORM"
+location = "{{cookiecutter.project_name}}/migrations"
+src_folder = "{{cookiecutter.project_name}}"
